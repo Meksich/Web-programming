@@ -1,10 +1,15 @@
-import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import MainTop from './MainTop.js';
+import MainBottom from './MainBottom.js';
 
-function Btn() {
+
+const Main = () => {
     return (
-        <Button> Hello, I'm button.
-        </Button>
+        <div>
+        <MainTop />
+        <MainBottom />
+        </div>
     );
 }
 
-export default Btn;
+export default Main;

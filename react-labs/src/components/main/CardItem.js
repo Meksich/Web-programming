@@ -1,21 +1,19 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Card, Button } from 'react-bootstrap'
-import Republic_gunship from '../../res/Republic-gunship.jpg'
 
-const CardItem = () =>{
+const CardItem = ({ title='No title.', tonnage, image, capacity }) =>{
     return(
         <Card style={{ width: '220px' }}>
-            <Card.Img variant = "top" src={Republic_gunship} />
+            <Card.Img variant = "top" src={image} />
             <Card.Body className="">
-            <Card.Title>Republic gunship</Card.Title>
+            <Card.Title>{title}</Card.Title>
             <Card.Text>
-                Capacity: 30 passangers
-                Tonnage: 80 GRT
+                Capacity: {capacity} passangers
+                Tonnage: {tonnage} GRT
             </Card.Text>
             </Card.Body>
             <small className="d-flex justify-content-around py-3">
-                <Button variant="outline-info" className="px-4 py-0 mr-5">Edit</Button>
-                <Button variant="outline-danger" className="px-3 py-0">Delete</Button>
+                <Button variant="outline-info" className="px-4 py-0 mr-5">Show More</Button>
             </small>
         </Card>
     );

@@ -25,8 +25,8 @@ const Header = () => {
                     </Nav>
                 </div>
                 <div className="d-flex my-2" style={{ maxHeight: 40 }}>
-                    <Button variant="outline-primary" className="btn btn-outline-primary mx-3">Find</Button>
-                    <Button variant="outline-danger" className="btn-outline-danger mx-3">Clear</Button>
+                    <Button variant="outline-secondary" className="mx-3">Find</Button>
+                    <Button variant="outline-secondary" className="mx-3">Clear</Button>
                 </div>
             </header>
         );
