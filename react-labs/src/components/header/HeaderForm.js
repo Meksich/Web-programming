@@ -11,7 +11,6 @@ const HeaderForm = () => {
                     <input class="form-control border-dark rounded-pill mx-2" type="search" placeholder="Type something..." aria-label="Search"
                         id="search-input" />
                     <Button variant="outline-secondary rounded-pill" className="mx-3">Find</Button>
-                    <Button variant="outline-secondary rounded-pill" className="mx-1">Clear</Button>
                 </form>
             }
         </div>
