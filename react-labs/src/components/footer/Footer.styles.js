@@ -62,6 +62,7 @@ export const FooterLinks = styled.nav`
 export const FooterLinksList = styled.ul`
     margin-left: auto;
     margin-right: auto;
+    padding: 0 0 0 20px;
     display: flex;
 `
 
