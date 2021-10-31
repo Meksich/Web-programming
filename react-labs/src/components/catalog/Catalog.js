@@ -1,10 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Header from '../header/Header';
 
-const Catalog = (props) => {
-    
+const Catalog = () => {
     return (
-        <Header isSearchEnabled={true} />
+        <Header />
     )
 }
 
