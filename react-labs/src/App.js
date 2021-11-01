@@ -6,10 +6,14 @@ import Catalog from './components/catalog/Catalog';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import React, {useState} from 'react';
 import HeaderContext from './contexts/HeaderContext';
+import CatalogContext from './contexts/CatalogContext';
 import Header from './components/header/Header';
+import {data} from './res/data/data';
+import ItemPage from './components/itempage/ItemPage';
 
 function App() {
   const [isSearchEnabled, setIsSearchEnabled] = useState(false);
+  const [dataRender, setDataRender] = useState(data);
   return (
     <BrowserRouter>
       <div>
@@ -17,12 +21,20 @@ function App() {
           isSearchEnabled,
           setIsSearchEnabled,
         }}>
+        <CatalogContext.Provider value={{
+          dataRender,
+          setDataRender,
+        }}>
         <Header/>
         <Routes>
+          
           <Route path={'/'} element={<Main />} />
           <Route path={'/catalog'} element={<Catalog/>} />
+          <Route path={"/itempage/:id"} element={<ItemPage/>}/>
         </Routes>
         <Footer />
+        
+        </CatalogContext.Provider>
         </HeaderContext.Provider>
       </div>
     </BrowserRouter>

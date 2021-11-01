@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 const Filter = (props) => {
     return (
-        <Dropdown>
+        <Dropdown id={props.set_id}>
             <option disabled>{props.filter_by}</option>
             <Option>{props.first_param}</Option>
             <Option>{props.second_param}</Option>
