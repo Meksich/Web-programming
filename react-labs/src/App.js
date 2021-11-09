@@ -1,16 +1,31 @@
-import CardItem from './components/main/CardItem';
+
 import './App.css';
-import Header from './components/header/Header';
 import Main from './components/main/Main';
 import Footer from './components/footer/Footer';
+import Catalog from './components/catalog/Catalog';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, {useState} from 'react';
+import HeaderContext from './contexts/HeaderContext';
+import Header from './components/header/Header';
 
 function App() {
+  const [isSearchEnabled, setIsSearchEnabled] = useState(false);
   return (
-    <div>
-        <Header />
-        <Main />
+    <BrowserRouter>
+      <div>
+        <HeaderContext.Provider value={{
+          isSearchEnabled,
+          setIsSearchEnabled,
+        }}>
+        <Header/>
+        <Routes>
+          <Route path={'/'} element={<Main />} />
+          <Route path={'/catalog'} element={<Catalog/>} />
+        </Routes>
         <Footer />
-    </div>
+        </HeaderContext.Provider>
+      </div>
+    </BrowserRouter>
   );
 }
 
