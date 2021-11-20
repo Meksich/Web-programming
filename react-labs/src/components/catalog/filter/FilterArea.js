@@ -1,46 +1,49 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Filter from './Filter';
 import { FilterWraper, FilterSpace, FilterButton } from './Filter.styles';
-import {data} from '../../../res/data/data';
 import React, { useContext } from 'react';
 import CatalogContext from '../../../contexts/CatalogContext';
 
 const FilterArea = () => {
-    let {setDataRender} = useContext(CatalogContext);
+    let {setFilters} = useContext(CatalogContext);
 
     const applyFilters = () => {
         let filter_1 = document.getElementById("filter_id_1").value;
         let filter_2 = document.getElementById("filter_id_2").value;
         let filter_3 = document.getElementById("filter_id_3").value;
-        let sortedData = Array.from(data);
+        let shipClass, destination, sortOrder;
         if(filter_1 == "Asc ↑"){
-            sortedData.sort((ship1, ship2) => ship1.price - ship2.price);
+            sortOrder = "asc";
         } else {
-            sortedData.sort((ship1, ship2) => ship2.price - ship1.price);
+            sortOrder = "desc";
         } 
 
         if(filter_2 == "Space ships"){
-            sortedData = sortedData.filter(ship => ship.destination === "space");
-        } else {
-            sortedData = sortedData.filter(ship => ship.destination === "sea");
+            destination = "space";
+        } else if (filter_2 == "Sea ships"){
+            destination = "sea";
         }
-        
+
         if(filter_3 == "Battle ships"){
-            sortedData = sortedData.filter(ship => ship.class === "battle");
+            shipClass = "battle";
         } else if(filter_3 == "Сargo ships"){
-            sortedData = sortedData.filter(ship => ship.class === "cargo");
-        } else{
-            sortedData = sortedData.filter(ship => ship.class === "passenger");
+            shipClass = "cargo";
+        } else if(filter_3 == "Passenger ships"){
+            shipClass = "passenger";
         }
-        setDataRender(sortedData);
+        setFilters({
+            shipClass: shipClass,
+            destination: destination,
+            sortOrder: sortOrder,
+        });
     }
-    
+
     return (
         <FilterSpace className="d-flex justify-content-around align-items-center">
             <FilterWraper className="d-flex justify-content-around align-items-center">
                 <Filter set_id="filter_id_1" filter_by="Sort by price" first_param="Asc ↑" second_param="Desc ↓" />
-                <Filter set_id="filter_id_2" filter_by="Filter by destination" first_param="Space ships" second_param="Sea ships" />
-                <Filter set_id="filter_id_3" filter_by="Filter by class" first_param="Battle ships" second_param="Сargo ships" third_param="Passenger ships" />
+                <Filter set_id="filter_id_2" filter_by="Filter by destination" first_param="No filter" second_param="Sea ships" third_param="Space ships" />
+                <Filter set_id="filter_id_3" filter_by="Filter by class" first_param="No filter" second_param="Сargo ships" third_param="Passenger ships" fourth_param="Battle ships" />
             </FilterWraper>
             <FilterButton className="border border-dark" onClick={applyFilters}>Apply</FilterButton>
         </FilterSpace>

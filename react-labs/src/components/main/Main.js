@@ -7,7 +7,7 @@ const Main = () => {
     return (
         <div>
             <MainTop />
-            <MainBottom />
+            <MainBottom numberOfCards={3}/>
         </div>
     );
 }

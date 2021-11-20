@@ -8,12 +8,12 @@ import React, {useState} from 'react';
 import HeaderContext from './contexts/HeaderContext';
 import CatalogContext from './contexts/CatalogContext';
 import Header from './components/header/Header';
-import {data} from './res/data/data';
 import ItemPage from './components/itempage/ItemPage';
 
 function App() {
   const [isSearchEnabled, setIsSearchEnabled] = useState(false);
-  const [dataRender, setDataRender] = useState(data);
+  const [dataRender, setDataRender] = useState([]);
+  const [filters, setFilters] =  useState({});
   return (
     <BrowserRouter>
       <div>
@@ -24,6 +24,8 @@ function App() {
         <CatalogContext.Provider value={{
           dataRender,
           setDataRender,
+          filters,
+          setFilters,
         }}>
         <Header/>
         <Routes>
