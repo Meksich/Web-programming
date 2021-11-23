@@ -1,16 +1,43 @@
-import CardItem from './components/main/CardItem';
+
 import './App.css';
-import Header from './components/header/Header';
 import Main from './components/main/Main';
 import Footer from './components/footer/Footer';
+import Catalog from './components/catalog/Catalog';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, {useState} from 'react';
+import HeaderContext from './contexts/HeaderContext';
+import CatalogContext from './contexts/CatalogContext';
+import Header from './components/header/Header';
+import {data} from './res/data/data';
+import ItemPage from './components/itempage/ItemPage';
 
 function App() {
+  const [isSearchEnabled, setIsSearchEnabled] = useState(false);
+  const [dataRender, setDataRender] = useState(data);
   return (
-    <div>
-        <Header />
-        <Main />
+    <BrowserRouter>
+      <div>
+        <HeaderContext.Provider value={{
+          isSearchEnabled,
+          setIsSearchEnabled,
+        }}>
+        <CatalogContext.Provider value={{
+          dataRender,
+          setDataRender,
+        }}>
+        <Header/>
+        <Routes>
+          
+          <Route path={'/'} element={<Main />} />
+          <Route path={'/catalog'} element={<Catalog/>} />
+          <Route path={"/itempage/:id"} element={<ItemPage/>}/>
+        </Routes>
         <Footer />
-    </div>
+        
+        </CatalogContext.Provider>
+        </HeaderContext.Provider>
+      </div>
+    </BrowserRouter>
   );
 }
 
