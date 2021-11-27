@@ -10,10 +10,10 @@ const http = axios.create({
 });
 
 export const getShip = async (id) => {
-    const rawResponse = await http.get(`http://localhost:8082/ship/${id}`);
-    return rawResponse.data
+    const rawResponse = await http.get(`${BASE_URL}/${id}`);
+    return rawResponse.data;
 }
 export const getShipList = async (shipClass = '', destination = '') => {
-    const rawResponse = await axios.get(`http://localhost:8082/ship?shipClass=${shipClass}&destination=${destination}`)
-    return rawResponse.data
+    const rawResponse = await axios.get(`${BASE_URL}?shipClass=${shipClass}&destination=${destination}`)
+    return rawResponse.data;
 }

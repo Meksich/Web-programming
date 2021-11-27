@@ -9,6 +9,7 @@ import HeaderContext from './contexts/HeaderContext';
 import CatalogContext from './contexts/CatalogContext';
 import Header from './components/header/Header';
 import ItemPage from './components/itempage/ItemPage';
+import Cart from './components/cart/Cart';
 
 function App() {
   const [isSearchEnabled, setIsSearchEnabled] = useState(false);
@@ -33,6 +34,7 @@ function App() {
           <Route path={'/'} element={<Main />} />
           <Route path={'/catalog'} element={<Catalog/>} />
           <Route path={"/itempage/:id"} element={<ItemPage/>}/>
+          <Route path={'/cart'} element={<Cart/>} />
         </Routes>
         <Footer />
         
