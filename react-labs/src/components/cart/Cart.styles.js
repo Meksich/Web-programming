@@ -34,19 +34,46 @@ background-color: black;
 `
 
 export const Buttons = styled.div`
-position: absolute;
 bottom: 15vh;
 width: 80vw;
-margin: 0 10vw;
+margin: 2vh 10vw;
 `
 
 export const CartItemStyled = styled.div`
 width: 70vw;
 margin: auto;
+margin-bottom: 3vh;
 border: solid;
 border-radius: 5px;
 `
 
 export const TitleStyled = styled.h4`
 margin: auto 1vw;
+`
+
+export const Pricing = styled.div`
+bottom: 22vh;
+margin-top: auto;
+margin-bottom: auto;
+margin-left: 73.5vw;
+`
+
+export const IncreaseButton = styled.button`
+margin: auto 2vw;
+width: 27px;
+background-color: white;
+  border-color: black;
+  border-radius: 6px;
+`
+
+export const Amount = styled.p`
+margin: auto 1vw;
+`
+
+export const DecreaseButton = styled.button`
+margin: auto 2vw;
+width: 27px;
+background-color: white;
+  border-color: black;
+  border-radius: 6px;
 `
