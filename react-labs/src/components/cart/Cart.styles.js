@@ -64,6 +64,10 @@ width: 27px;
 background-color: white;
   border-color: black;
   border-radius: 6px;
+  :hover{
+    background-color: rgb(46, 46, 46);
+  color: white;
+  }
 `
 
 export const Amount = styled.p`
@@ -76,4 +80,17 @@ width: 27px;
 background-color: white;
   border-color: black;
   border-radius: 6px;
+  :hover{
+    background-color: rgb(46, 46, 46);
+  color: white;
+  }
 `
+
+export const NoItems = styled.h4`
+margin: 200px 35vw;
+  font-size: 30px;
+  font-weight: normal;
+  font-style: italic;
+  color: lightgray;
+  text-align: center;
+  `

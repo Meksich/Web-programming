@@ -14,8 +14,13 @@ import HeaderContext from '../../contexts/HeaderContext';
 import { getShip } from '../../api/Api';
 import React, { useState, useEffect } from 'react';
 import { Loading } from '../loading/Loading';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart, increaseAmount } from '../../redux/actions';
 
 const ItemPage = () => {
+    const cartItems = useSelector((state) => state.cartItems.cartItems);
+    let dispatch = useDispatch();
+
     const { id } = useParams();
     const [ship, setShip] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -27,21 +32,37 @@ const ItemPage = () => {
         });
     }, [id]);
     const { setIsSearchEnabled } = useContext(HeaderContext);
+
+    const handleAddToCart = () => {
+        let shipsNumber;
+        if (document.getElementById("amount").value != ""){
+            shipsNumber = parseInt(document.getElementById("amount").value);
+        } else {
+            shipsNumber = 1;
+        }
+        if (cartItems.some(item => item.id == id)) {
+            dispatch(increaseAmount(id, shipsNumber));
+        } else {
+            let item = ship;
+            item.amount = shipsNumber;
+            dispatch(addToCart(item));
+        }
+    }
+
     return (
         <ItemPageContainer>
             <div className="d-flex justify-content-around">
                 <ImageBg src={port} />
                 <ItemPageImageWraper>
-                    {isLoaded ? <Image src={ship.image} />: <Loading/>}
+                    {isLoaded ? <Image src={ship.image} /> : <Loading />}
                 </ItemPageImageWraper>
                 <ItemPageText>
                     <h3 className="display-1 fs-3 fw-normal text-dark py-3">{ship.title}</h3>
-                    {descriptions[id-1].description}
+                    {descriptions[id - 1].description}
                     <div className="d-flex">
                         <div className="d-flex flex-column py-3">
                             <InputText className="font-weight-bold py-3">Enter amount of ships:</InputText>
-                            <ItemPageInput type="search" placeholder="Amount..." aria-label="Search"
-                                id="search-input" />
+                            <ItemPageInput id="amount" type="search" placeholder="Amount..." aria-label="Search"/>
                         </div>
                         <div className="d-flex flex-column py-3 px-5">
                             <InputText className="font-weight-bold py-3">Choose color of ship:</InputText>
@@ -65,7 +86,7 @@ const ItemPage = () => {
                         <GoBackButton>Go back</GoBackButton>
                     </Link>
                     <Link to={'/cart'}>
-                        <AddToCartButton>Add to cart</AddToCartButton>
+                        <AddToCartButton onClick={handleAddToCart}>Add to cart</AddToCartButton>
                     </Link>
                 </Buttons>
             </div>
