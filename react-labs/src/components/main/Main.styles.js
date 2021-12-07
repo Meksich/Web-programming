@@ -36,3 +36,15 @@ export const CardDeck = styled.div`
 border-radius: 10px;
 border: solid;
 `
+export const MoreButton = styled.button`
+background-color: white;
+border-radius: 5px;
+padding-left: 0.5vw;
+width: 15vw;
+height: 5vh;
+margin: 2vh 40.6vw;
+
+:hover{
+    background-color: #D9d9dc;
+}
+`

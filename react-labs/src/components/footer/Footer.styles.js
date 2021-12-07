@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const FooterGlobal = styled.footer`
-    background: #E7ECFF;
+    background-color: #f8f9fa;
     padding: 60px 0 32px;
     width: 100vw;
 `
@@ -62,6 +62,7 @@ export const FooterLinks = styled.nav`
 export const FooterLinksList = styled.ul`
     margin-left: auto;
     margin-right: auto;
+    padding: 0 0 0 20px;
     display: flex;
 `
 

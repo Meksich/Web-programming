@@ -6,8 +6,8 @@ import MainBottom from './MainBottom.js';
 const Main = () => {
     return (
         <div>
-        <MainTop />
-        <MainBottom />
+            <MainTop />
+            <MainBottom numberOfCards={3}/>
         </div>
     );
 }
